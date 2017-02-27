@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	lib "golangmicroservice/lib"
 	"net/http"
 )
 
@@ -23,6 +24,7 @@ func main() {
 
 func about(w http.ResponseWriter, r *http.Request) {
 	m := Message{"Welcome to the about route"}
+	lib.PostRequest()
 	b, err := json.Marshal(m)
 	if err != nil {
 		panic(err)

@@ -1,4 +1,4 @@
-package post
+package lib
 
 import (
 	"bytes"
@@ -7,18 +7,17 @@ import (
 	"net/http"
 )
 
-func postRequest() {
-	url := "http://restapi3.apiary.io/notes"
+//PostRequest perfom post request
+func PostRequest() {
+	url := "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyA0uSmWKCub1EUkwxP7xd3S7xVqRIvGq84"
 	fmt.Println("URL:>", url)
 
-	var jsonStr = []byte(`{"title":"Buy cheese and bread for breakfast."}`)
+	var jsonStr = []byte(`{}`)
 	req, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonStr))
 	if err != nil {
 		panic(err)
 	}
-	req.Header.Set("X-Custom-Header", "myvalue")
 	req.Header.Set("Content-Type", "application/json")
-
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
